@@ -1,0 +1,25 @@
+{
+  "name": "deweppro/patterns",
+  "description": "php patterns",
+  "keywords": [
+    "singleton",
+    "mvc",
+    "pattern"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mikhail Knyazhev",
+      "email": "markus621@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Dewep\\": "Dewep/"
+    }
+  },
+  "require": {
+    "php": ">=7.0.0"
+  }
+}
