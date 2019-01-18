@@ -3,7 +3,9 @@
 namespace Dewep\Patterns;
 
 /**
- * @author Mikhail Knyazhev <markus621@gmail.com>
+ * Class Registry
+ *
+ * @package Dewep\Patterns
  */
 abstract class Registry
 {
@@ -12,27 +14,36 @@ abstract class Registry
      */
     protected static $__registry = [];
 
+    /**
+     * Registry constructor.
+     */
     final private function __construct()
     {
-
     }
 
     /**
      * @param string $key
-     * @param $value
+     * @param mixed  $value
+     *
+     * @return bool
      */
-    public static function exist(string $key, $value)
+    public static function exist(string $key, $value): bool
     {
         if (!self::has($key)) {
             self::set($key, $value);
+
+            return false;
         }
+
+        return true;
     }
 
     /**
      * @param string $key
+     *
      * @return bool
      */
-    public static function has(string $key)
+    public static function has(string $key): bool
     {
         return isset(self::$__registry[self::__class()][$key]);
     }
@@ -47,7 +58,7 @@ abstract class Registry
 
     /**
      * @param string $key
-     * @param $value
+     * @param mixed  $value
      */
     public static function set(string $key, $value)
     {
@@ -55,7 +66,8 @@ abstract class Registry
     }
 
     /**
-     * @param $value
+     * @param mixed $value
+     *
      * @return mixed
      */
     protected static function value($value)
@@ -65,7 +77,8 @@ abstract class Registry
 
     /**
      * @param string $key
-     * @param null $default
+     * @param mixed  $default
+     *
      * @return mixed
      */
     public static function get(string $key, $default = null)
@@ -104,6 +117,9 @@ abstract class Registry
         return array_keys(self::$__registry[self::__class()]);
     }
 
+    /**
+     *
+     */
     final private function __clone()
     {
 

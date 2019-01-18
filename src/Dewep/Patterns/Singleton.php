@@ -3,15 +3,20 @@
 namespace Dewep\Patterns;
 
 /**
- * @author Mikhail Knyazhev <markus621@gmail.com>
+ * Class Singleton
+ *
+ * @package Dewep\Patterns
  */
 abstract class Singleton
 {
     /**
-     * @var static
+     * @var array
      */
-    protected static $__instance;
+    protected static $__instance = [];
 
+    /**
+     * Singleton constructor.
+     */
     final private function __construct()
     {
 
@@ -22,7 +27,7 @@ abstract class Singleton
      */
     final public static function getInstance()
     {
-        if (isset(self::$__instance[self::__class()])) {
+        if (!isset(self::$__instance[self::__class()])) {
             self::$__instance[self::__class()] = new static();
         }
 
@@ -37,6 +42,9 @@ abstract class Singleton
         return get_called_class();
     }
 
+    /**
+     *
+     */
     final private function __clone()
     {
 
